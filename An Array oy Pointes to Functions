@@ -1,0 +1,92 @@
+/*
+* 
+* Advanced C Programming Masterclass: Pointers & Memory in C
+* 
+* @theme Pointers to Functions
+* @brief An Array oy Pointes to Functions
+* @author Vlad Budnitski 
+* @date 17/03/2023
+* 
+*/
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+
+void addition(int a, int b)
+{
+    printf("%d + %d = %d\n", a, b, a + b);
+}
+void substration(int a, int b)
+{
+    printf("%d - %d = %d\n", a, b, a - b);
+}
+void multiplication(int a, int b)
+{
+    printf("%d * %d = %d\n", a, b, a * b);
+}
+void division(int a, int b)
+{
+    if (b != 0)
+        printf("%d / %d = %d\n", a, b, a / b);
+    else
+        printf("Cannot divid by zero!\n");
+}
+void remainder(int a, int b)
+{
+    if (b != 0)
+        printf("%d %% %d = %d\n", a, b, a % b);
+    else
+        printf("Cannot divid by zero!\n");
+}
+bool valition(int choise)
+{
+    if (choise >= 0 && choise <= 4 && choise != 99)
+        return true;
+    else
+        return false;
+}
+
+int main()
+{
+    void (*ptrFunctionArray[])(int, int) = {addition,substration,multiplication,division,remainder};
+    int num1, num2;
+    int choise;
+    bool validate;
+    do
+    {
+        printf("Choose: \n0 - addition\n1 - substration\n2 - multiplication\n3 - division\n4 - remainder\n99 - to exit\n");
+        scanf("%d", &choise);
+        validate = valition(choise);
+        if (validate)
+        {
+            printf("Enter number 1: ");
+            scanf("%d",&num1);
+            printf("Enter number 2: ");
+            scanf("%d", &num2);
+            (*ptrFunctionArray[choise])(num1,num2);
+        }
+
+    } while (choise != 99);
+
+    printf("Thank you, came again!\n");
+   
+    return 0;
+}
+
+
+
+
+
+    
+
+
+
+
+
+
