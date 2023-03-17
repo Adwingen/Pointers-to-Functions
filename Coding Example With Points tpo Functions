@@ -1,0 +1,48 @@
+/*
+* 
+* Advanced C Programming Masterclass: Pointers & Memory in C
+* 
+* @theme Pointers to Functions
+* @brief Coding Example With Points tpo Functions
+* @author Vlad Budnitski 
+* @date 17/03/2023
+* 
+*/
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void ageFunc(int age)
+{
+    printf("Your age is %d\n", age);
+}
+
+int main()
+{
+    int age;
+    void (*ptrFun)(int); // pointer to function
+    printf("Enter your age: ");
+    scanf("%d", &age);
+
+    ptrFun = ageFunc;
+    (*ptrFun)(age);
+   
+    return 0;
+}
+
+
+
+
+
+    
+
+
+
+
+
+
